@@ -10,7 +10,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val model: CustomViewModel = ViewModelProvider(this).get(CustomViewModel::class.java)
+        val factory = FactoryCustomVM(10)
+        val model: CustomViewModel = ViewModelProvider(this, factory).get(CustomViewModel::class.java)
         textView.text = model.cout.toString()
         button.setOnClickListener {
             model.cout++
